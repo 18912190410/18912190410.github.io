@@ -496,7 +496,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    697
+                    699
                 </div>
                 
 
@@ -545,7 +545,7 @@
 <p>之后就可以通过绑定的域名访问评论管理系统</p>
 <h1 id="自动唤醒"><a href="#自动唤醒" class="headerlink" title="自动唤醒"></a>自动唤醒</h1><p>（如果你不想花钱的话）</p>
 <p>fork 这个仓库到自己的账户里：<a target="_blank" rel="noopener" href="https://github.com/AimTao/leancloud-self-wake">https://github.com/AimTao/leancloud-self-wake</a></p>
-<p>进入这个仓库，setting-secrets-actions添加一个秘密Name 一定要是 SITE，因为 脚本里要用这个名字；Value 则为你的评论后台网站的地址（https://刚才绑定的域名）</p>
+<p>进入这个仓库，setting-secrets-actions添加一个秘密Name 一定要是 SITE，因为 脚本里要用这个名字；Value 则为你的评论后台网站的地址（https:&#x2F;&#x2F;刚才绑定的域名）</p>
 <p>点击你的仓库上方的 Actions 选项，，点击 <code>I understand...</code> 的按钮，确认在 Fork 的仓库上启用 GitHub Actions （可能需要点击一下enable什么的）</p>
 <p>点击自己仓库右上角 star ，star 你的仓库，这是为了触发 Github Action 第一次执行，之后就会自动执行定时任务。</p>
 <p>参考文章</p>
@@ -1456,6 +1456,21 @@
 </div>
     </div>
 </footer>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
 
 <div class="progress-bar"></div>
 
