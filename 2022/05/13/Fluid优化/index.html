@@ -1,0 +1,767 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="刘涵">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="文章加密cmd进入根目录，安装  npm install hexo-blog-encrypt  在文章信息头中添加例如   title: Fluid优化password: 123456abstract: 这是一篇加密的文章&#x2F;&#x2F;文章显示的摘要message: 请输入密码哦~wrong_pass_message: 密码似乎不对哦   页面添加特效 转载自CSDN博主「林慕凡」的原创">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fluid优化">
+<meta property="og:url" content="https://18912190410.github.io/2022/05/13/Fluid%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="刘涵の博客">
+<meta property="og:description" content="文章加密cmd进入根目录，安装  npm install hexo-blog-encrypt  在文章信息头中添加例如   title: Fluid优化password: 123456abstract: 这是一篇加密的文章&#x2F;&#x2F;文章显示的摘要message: 请输入密码哦~wrong_pass_message: 密码似乎不对哦   页面添加特效 转载自CSDN博主「林慕凡」的原创">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://avatars2.githubusercontent.com/t/3419353?s=280&v=4">
+<meta property="article:published_time" content="2022-05-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-14T14:03:07.348Z">
+<meta property="article:author" content="刘涵">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://avatars2.githubusercontent.com/t/3419353?s=280&v=4">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Fluid优化 - 刘涵の博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"18912190410.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"♡","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>刘涵の博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="http://nas.18912190410.cn:32059/">
+                <i class="iconfont icon-tags-fill"></i>
+                NAS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Fluid优化"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-13 00:00" pubdate>
+          2022年5月13日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          44 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Fluid优化</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="文章加密"><a href="#文章加密" class="headerlink" title="文章加密"></a>文章加密</h3><p>cmd进入根目录，安装</p>
+<blockquote>
+<p>npm install hexo-blog-encrypt</p>
+</blockquote>
+<p>在文章信息头中添加<br>例如</p>
+<blockquote>
+<hr>
+<p>title: Fluid优化<br>password: 123456<br>abstract: 这是一篇加密的文章&#x2F;&#x2F;文章显示的摘要<br>message: 请输入密码哦~<br>wrong_pass_message: 密码似乎不对哦</p>
+<hr>
+</blockquote>
+<h3 id="页面添加特效"><a href="#页面添加特效" class="headerlink" title="页面添加特效"></a>页面添加特效</h3><blockquote>
+<p>转载自CSDN博主「林慕凡」的原创文章<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43471926/article/details/109798811">https://blog.csdn.net/weixin_43471926/article/details/109798811</a></p>
+</blockquote>
+<p>1.新建css或者js文件<br>我们以js为例，在themes\fluid\source\js\文件夹下新建一个文本文档，找到一段可用的js美化代码，复制粘贴的新建的文档里面，然后把文档的.txt修改成.css，命好名字。<br>然后打开主题配置文件&#x2F;themes&#x2F;fluid&#x2F;_config.yml找到“custom_css”和“custom_js”下面进行引入。</p>
+<p>代码在下方的链接里</p>
+<p>2.把新建的js&#x2F;css文件引入主题</p>
+<blockquote>
+<p>custom_js:</p>
+</blockquote>
+<ul>
+<li>&#x2F;js&#x2F;aixin.js</li>
+<li>&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;aplayer&#x2F;dist&#x2F;APlayer.min.js  <em>#&#x2F;APlayer#&#x2F;APlayer依赖</em><br>  \有依赖的一定要把依赖填上，没有的不填</li>
+</ul>
+<p>-前面一定要是两个空格</p>
+<blockquote>
+<p>custom_css:</p>
+</blockquote>
+<ul>
+<li>&#x2F;css&#x2F;diy&#x2F;shubiao.css</li>
+</ul>
+<p>三、美化开始</p>
+<h2 id="JS类特效"><a href="#JS类特效" class="headerlink" title="JS类特效"></a><strong>JS类特效</strong></h2><h3 id="1-头部上升的气泡"><a href="#1-头部上升的气泡" class="headerlink" title="1.头部上升的气泡"></a><em>1.头部上升的气泡</em></h3><img src="https://img-blog.csdnimg.cn/img_convert/3555765bffead797731dc552ef79fa83.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js</a> </p>
+<h3 id="2-动态彩带"><a href="#2-动态彩带" class="headerlink" title="2.动态彩带"></a><em>2.动态彩带</em></h3><img src="https://img-blog.csdnimg.cn/img_convert/f1689dd93e5b81645ef6d37cb6d6e644.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js</a></p>
+<h3 id="3-静态彩带点击改变形状"><a href="#3-静态彩带点击改变形状" class="headerlink" title="3.静态彩带点击改变形状"></a><em>3.静态彩带点击改变形状</em></h3><img src="https://img-blog.csdnimg.cn/img_convert/f1689dd93e5b81645ef6d37cb6d6e644.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js</a></p>
+<h3 id="4-动态黑色线条"><a href="#4-动态黑色线条" class="headerlink" title="4.动态黑色线条"></a><em>4.动态黑色线条</em></h3><img src="https://img-blog.csdnimg.cn/img_convert/d08bc48555cf2b468a2fa56bd854cf77.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js</a></p>
+<h3 id="5-小雪花飘落"><a href="#5-小雪花飘落" class="headerlink" title="5.小雪花飘落"></a><em>5.小雪花飘落</em></h3><img src="https://img-blog.csdnimg.cn/img_convert/0494c6fdd9fd107dab05b27c263da668.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxuehua.js">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxuehua.js</a></p>
+<h3 id="6-樱花飘落"><a href="#6-樱花飘落" class="headerlink" title="6.樱花飘落"></a><em>6.樱花飘落</em></h3><img src="https://img-blog.csdnimg.cn/img_convert/29a4401d0545e738c220d8a8507c4565.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js</a></p>
+<h3 id="7-鼠标跟随小星星"><a href="#7-鼠标跟随小星星" class="headerlink" title="7.鼠标跟随小星星"></a><em>7.鼠标跟随小星星</em></h3><img src="https://img-blog.csdnimg.cn/img_convert/081f5d0068dc3af0dc924ff3690c50ee.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js</a></p>
+<h3 id="8-页脚加入运行时间-不知道为啥这个我没能添加成功，用的另外的方法"><a href="#8-页脚加入运行时间-不知道为啥这个我没能添加成功，用的另外的方法" class="headerlink" title="8.页脚加入运行时间(不知道为啥这个我没能添加成功，用的另外的方法)"></a>8.页脚加入运行时间(不知道为啥这个我没能添加成功，用的另外的方法)</h3><img src="https://img-blog.csdnimg.cn/img_convert/2027eb6312b0a83506c25c23c5a3362b.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js</a></p>
+<h3 id="9-大雪花飘落"><a href="#9-大雪花飘落" class="headerlink" title="9.大雪花飘落"></a><em>9.大雪花飘落</em></h3><img src="https://img-blog.csdnimg.cn/img_convert/c829a13989153cd8263ab0da523b8784.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/daxuehua.js">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/daxuehua.js</a></p>
+<h3 id="10-鼠标点击出字"><a href="#10-鼠标点击出字" class="headerlink" title="10.鼠标点击出字"></a><em>10.鼠标点击出字</em></h3><img src="https://img-blog.csdnimg.cn/img_convert/b4976ea1161e36e03702b660c9354ce8.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js</a> </p>
+<h3 id="11-鼠标点击出小爱心❤"><a href="#11-鼠标点击出小爱心❤" class="headerlink" title="11.鼠标点击出小爱心❤"></a><em>11.鼠标点击出小爱心❤</em></h3><img src="https://img-blog.csdnimg.cn/img_convert/f82d09498b2d766ea9917559346fd268.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">!<span class="hljs-keyword">function</span>(<span class="hljs-params">e,t,a</span>)&#123;<span class="hljs-keyword">function</span> <span class="hljs-title function_">n</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-title function_">c</span>(<span class="hljs-string">&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#x27;&#x27;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;</span>),<span class="hljs-title function_">o</span>(),<span class="hljs-title function_">r</span>()&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">r</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> e=<span class="hljs-number">0</span>;e&lt;d.<span class="hljs-property">length</span>;e++)d[e].<span class="hljs-property">alpha</span>&lt;=<span class="hljs-number">0</span>?(t.<span class="hljs-property">body</span>.<span class="hljs-title function_">removeChild</span>(d[e].<span class="hljs-property">el</span>),d.<span class="hljs-title function_">splice</span>(e,<span class="hljs-number">1</span>)):(d[e].<span class="hljs-property">y</span>--,d[e].<span class="hljs-property">scale</span>+=<span class="hljs-number">.004</span>,d[e].<span class="hljs-property">alpha</span>-=<span class="hljs-number">.013</span>,d[e].<span class="hljs-property">el</span>.<span class="hljs-property">style</span>.<span class="hljs-property">cssText</span>=<span class="hljs-string">&quot;left:&quot;</span>+d[e].<span class="hljs-property">x</span>+<span class="hljs-string">&quot;px;top:&quot;</span>+d[e].<span class="hljs-property">y</span>+<span class="hljs-string">&quot;px;opacity:&quot;</span>+d[e].<span class="hljs-property">alpha</span>+<span class="hljs-string">&quot;;transform:scale(&quot;</span>+d[e].<span class="hljs-property">scale</span>+<span class="hljs-string">&quot;,&quot;</span>+d[e].<span class="hljs-property">scale</span>+<span class="hljs-string">&quot;) rotate(45deg);background:&quot;</span>+d[e].<span class="hljs-property">color</span>+<span class="hljs-string">&quot;;z-index:99999&quot;</span>);<span class="hljs-title function_">requestAnimationFrame</span>(r)&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">o</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">var</span> t=<span class="hljs-string">&quot;function&quot;</span>==<span class="hljs-keyword">typeof</span> e.<span class="hljs-property">onclick</span>&amp;&amp;e.<span class="hljs-property">onclick</span>;e.<span class="hljs-property">onclick</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)&#123;t&amp;&amp;<span class="hljs-title function_">t</span>(),<span class="hljs-title function_">i</span>(e)&#125;&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">i</span>(<span class="hljs-params">e</span>)&#123;<span class="hljs-keyword">var</span> a=t.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;div&quot;</span>);a.<span class="hljs-property">className</span>=<span class="hljs-string">&quot;heart&quot;</span>,d.<span class="hljs-title function_">push</span>(&#123;<span class="hljs-attr">el</span>:a,<span class="hljs-attr">x</span>:e.<span class="hljs-property">clientX</span>-<span class="hljs-number">5</span>,<span class="hljs-attr">y</span>:e.<span class="hljs-property">clientY</span>-<span class="hljs-number">5</span>,<span class="hljs-attr">scale</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">alpha</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">color</span>:<span class="hljs-title function_">s</span>()&#125;),t.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(a)&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">c</span>(<span class="hljs-params">e</span>)&#123;<span class="hljs-keyword">var</span> a=t.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;style&quot;</span>);a.<span class="hljs-property">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>;<span class="hljs-keyword">try</span>&#123;a.<span class="hljs-title function_">appendChild</span>(t.<span class="hljs-title function_">createTextNode</span>(e))&#125;<span class="hljs-keyword">catch</span>(t)&#123;a.<span class="hljs-property">styleSheet</span>.<span class="hljs-property">cssText</span>=e&#125;t.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&quot;head&quot;</span>)[<span class="hljs-number">0</span>].<span class="hljs-title function_">appendChild</span>(a)&#125;<span class="hljs-keyword">function</span> <span class="hljs-title function_">s</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">return</span><span class="hljs-string">&quot;rgb(&quot;</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>())+<span class="hljs-string">&quot;,&quot;</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>())+<span class="hljs-string">&quot;,&quot;</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>())+<span class="hljs-string">&quot;)&quot;</span>&#125;<span class="hljs-keyword">var</span> d=[];e.<span class="hljs-property">requestAnimationFrame</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">return</span> e.<span class="hljs-property">requestAnimationFrame</span>||e.<span class="hljs-property">webkitRequestAnimationFrame</span>||e.<span class="hljs-property">mozRequestAnimationFrame</span>||e.<span class="hljs-property">oRequestAnimationFrame</span>||e.<span class="hljs-property">msRequestAnimationFrame</span>||<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)&#123;<span class="hljs-built_in">setTimeout</span>(e,<span class="hljs-number">1e3</span>/<span class="hljs-number">60</span>)&#125;&#125;(),<span class="hljs-title function_">n</span>()&#125;(<span class="hljs-variable language_">window</span>,<span class="hljs-variable language_">document</span>);<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="12-鼠标点击出爆炸效果"><a href="#12-鼠标点击出爆炸效果" class="headerlink" title="12.鼠标点击出爆炸效果"></a><em>12.鼠标点击出爆炸效果</em></h3><img src="https://img-blog.csdnimg.cn/img_convert/2995d164006f2cd384ac81cc54ec8b6b.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js</a><br>&#x2F;&#x2F;cdn.bootcss.com&#x2F;animejs&#x2F;2.2.0&#x2F;anime.min.js #依赖</p>
+<h2 id="CSS类"><a href="#CSS类" class="headerlink" title="CSS类"></a><strong>CSS类</strong></h2><h3 id="1-头部打字机颜色效果渐变"><a href="#1-头部打字机颜色效果渐变" class="headerlink" title="1.头部打字机颜色效果渐变"></a><em>1.头部打字机颜色效果渐变</em></h3><img src="https://img-blog.csdnimg.cn/img_convert/1357f1d03d5223a9401d4db121f7791c.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css</a> </p>
+<h3 id="2-头部打字机颜色"><a href="#2-头部打字机颜色" class="headerlink" title="2.头部打字机颜色"></a><em>2.头部打字机颜色</em></h3><img src="https://img-blog.csdnimg.cn/img_convert/1357f1d03d5223a9401d4db121f7791c.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/daziyanse.css">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/daziyanse.css</a></p>
+<h3 id="3-滚动条颜色"><a href="#3-滚动条颜色" class="headerlink" title="3.滚动条颜色"></a><em>3.滚动条颜色</em></h3><img src="https://img-blog.csdnimg.cn/img_convert/f3bcb50723070099eacb781faf6aef3a.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css</a></p>
+<h3 id="4-鼠标指针"><a href="#4-鼠标指针" class="headerlink" title="4.鼠标指针"></a><em>4.鼠标指针</em></h3><p><img src="https://img-blog.csdnimg.cn/img_convert/8b8d7c0c1f0793c36590dc5f12f676a8.png" srcset="/img/loading.gif" lazyload></p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css</a></p>
+<h1 id="加入运行时间"><a href="#加入运行时间" class="headerlink" title="加入运行时间"></a>加入运行时间</h1><p>在themes&#x2F;fluid&#x2F;layout&#x2F;_partial&#x2F;footer.ejs中，在底部的</footer>之前输入以下代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;timeDate&quot;</span>&gt;</span>载入天数...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;times&quot;</span>&gt;</span>载入时分秒...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">      <span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();</span><br><span class="language-javascript">      <span class="hljs-keyword">function</span> <span class="hljs-title function_">createtime</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">          <span class="hljs-keyword">var</span> grt= <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&quot;05/12/2022 00:00:00&quot;</span>);<span class="hljs-comment">//此处修改你的建站时间或者网站上线时间</span></span><br><span class="language-javascript">          now.<span class="hljs-title function_">setTime</span>(now.<span class="hljs-title function_">getTime</span>()+<span class="hljs-number">250</span>);</span><br><span class="language-javascript">          days = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> / <span class="hljs-number">24</span>;</span><br><span class="language-javascript">          dnum = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(days);</span><br><span class="language-javascript">          hours = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * dnum);</span><br><span class="language-javascript">          hnum = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(hours);</span><br><span class="language-javascript">          <span class="hljs-keyword">if</span>(<span class="hljs-title class_">String</span>(hnum).<span class="hljs-property">length</span> ==<span class="hljs-number">1</span> )&#123;</span><br><span class="language-javascript">              hnum = <span class="hljs-string">&quot;0&quot;</span> + hnum;</span><br><span class="language-javascript">          &#125;</span><br><span class="language-javascript">          minutes = (now - grt ) / <span class="hljs-number">1000</span> /<span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * hnum);</span><br><span class="language-javascript">          mnum = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(minutes);</span><br><span class="language-javascript">          <span class="hljs-keyword">if</span>(<span class="hljs-title class_">String</span>(mnum).<span class="hljs-property">length</span> ==<span class="hljs-number">1</span> )&#123;</span><br><span class="language-javascript">                    mnum = <span class="hljs-string">&quot;0&quot;</span> + mnum;</span><br><span class="language-javascript">          &#125;</span><br><span class="language-javascript">          seconds = (now - grt ) / <span class="hljs-number">1000</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * <span class="hljs-number">60</span> * hnum) - (<span class="hljs-number">60</span> * mnum);</span><br><span class="language-javascript">          snum = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>(seconds);</span><br><span class="language-javascript">          <span class="hljs-keyword">if</span>(<span class="hljs-title class_">String</span>(snum).<span class="hljs-property">length</span> ==<span class="hljs-number">1</span> )&#123;</span><br><span class="language-javascript">                    snum = <span class="hljs-string">&quot;0&quot;</span> + snum;</span><br><span class="language-javascript">          &#125;</span><br><span class="language-javascript">          <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;timeDate&quot;</span>).<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;🚀 &amp;nbsp&quot;</span>+dnum+<span class="hljs-string">&quot;&amp;nbsp天&quot;</span>;  <span class="hljs-comment">//此次自定义显示内容</span></span><br><span class="language-javascript">          <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;times&quot;</span>).<span class="hljs-property">innerHTML</span> = hnum + <span class="hljs-string">&quot;&amp;nbsp小时&amp;nbsp&quot;</span> + mnum + <span class="hljs-string">&quot;&amp;nbsp分&amp;nbsp&quot;</span> + snum + <span class="hljs-string">&quot;&amp;nbsp秒&quot;</span>;</span><br><span class="language-javascript">      &#125;  <span class="hljs-comment">//此次自定义显示内容</span></span><br><span class="language-javascript">      <span class="hljs-built_in">setInterval</span>(<span class="hljs-string">&quot;createtime()&quot;</span>,<span class="hljs-number">250</span>);</span><br><span class="language-javascript">      </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="加入版权所有"><a href="#加入版权所有" class="headerlink" title="加入版权所有"></a>加入版权所有</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>版权所有 © 2022<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://18912190410.cn&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;nofollow noopener&quot;</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>刘涵的博客<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>    <br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Fluid/" class="category-chain-item">Fluid</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Fluid优化</div>
+      <div>https://18912190410.github.io/2022/05/13/Fluid优化/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>刘涵</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/14/%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BD%91%E9%A1%B5/" title="常用的网页">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">常用的网页</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/13/%E6%97%A5%E5%BF%971/" title="日志1">
+                        <span class="hidden-mobile">日志1</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
